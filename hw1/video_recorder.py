@@ -10,3 +10,11 @@ frame_height = int(video.get(cv.CAP_PROP_FRAME_HEIGHT))
 
 fourcc = cv.VideoWriter_fourcc(*'mp4v')
 out = cv.VideoWriter('video_output.mp4', fourcc, 20.0,(frame_width,frame_height))
+
+recording = False
+paused = False 
+mirroring = False 
+start_time = 0
+elapsed_time = 0
+blink = False
+last_blink_time = 0
