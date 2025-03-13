@@ -59,4 +59,18 @@ while True:
         else:
             recording = False
             print("End Recording")
+    elif key == ord('p') and recording:
+        paused = not paused
+        if paused:
+            print("Recordinf Paused")
+        else:
+            start_time = time.time()-elapsed_time
+            print("Resume")
+    elif key == ord('m'):
+        mirroring = not mirroring
+        print("Mirroring" if mirroring else "Canceled mirroring")
+
+video.release()
+out.release()
+cv.destroyAllWindows()
         
