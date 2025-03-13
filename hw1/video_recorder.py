@@ -1,4 +1,5 @@
 import cv2 as cv
+import time
 
 video = cv.VideoCapture(0)
 
@@ -18,3 +19,24 @@ start_time = 0
 elapsed_time = 0
 blink = False
 last_blink_time = 0
+
+while True:
+    ret, frame = video.read()
+    if not ret:
+        print("Cannot read frame from camera")
+        break
+    
+    if mirroring:
+        frame = cv.flip(frame, 1)
+    
+    if recording and not paused:
+        out.write(frame)
+        elapsed_time = time.time() - start_time
+        
+        if time.time() - last_blink_time >= 0.5:
+            blink = not blank
+            last_blink_time = time.time()
+            
+        if blink:
+            cv.circle(frame, (50,50), 10, (0,0,255), -1)    
+    
