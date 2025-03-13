@@ -34,20 +34,20 @@ while True:
         elapsed_time = time.time() - start_time
         
         if time.time() - last_blink_time >= 0.5:
-            blink = not blank
+            blink = not blink
             last_blink_time = time.time()
             
         if blink:
             cv.circle(frame, (50,50), 10, (0,0,255), -1)   
     
     if recording:
-        text = "Recording... {:.if}s".format(elapsed_time) if not paused else "Paused"
-        cv.putText(frame, tex, (70,50), cv.FONT_HERSHEY_SIMPLEX, 0,7, (255,255,255),2)
+        text = "Recording... {:.1f}s".format(elapsed_time) if not paused else "Paused"
+        cv.putText(frame, text, (70,50), cv.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255),2)
         
     cv.imshow("Video Recorder", frame)
     
     key = cv.waitKey(1) & 0xFF
-    if key = 27:
+    if key == 27:
         break
     elif key == 32:
         if not recording:
