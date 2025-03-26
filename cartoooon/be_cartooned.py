@@ -3,7 +3,7 @@ import numpy as np
 
 def cartoonify_image(image_path):
     # Load the image
-    img = cv2.imread("C:\\Users\\IFtech\\Desktop\\image.jpg")
+    img = cv2.imread("C:\\Users\\IFtech\\Desktop\\image.jpeg")
     if img is None:
         print("Error: Unable to load image.")
         return
